@@ -47,6 +47,28 @@ function privacy_civicrm_uninstall() {
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_enable
  */
 function privacy_civicrm_enable() {
+
+  // Check/create field group.
+  $fieldgroup = privacy_civicrm_createFieldGroup('ctrl_individual_privacy', 'Privacy', 'Individual');
+
+  // Check/create option group.
+  $optiongroup = privacy_civicrm_createOptionGroup('ctrl_individual_privacy_group');
+
+  // Get all active location types from website.
+  $optiongrouplist = privacy_civicrm_locationTypes();
+
+  // Check/add option group fields from list.
+  if ($optiongroup['status']) {
+    $optiongroupvalues = privacy_civicrm_createOptionGroupValues($optiongroup['id'], $optiongrouplist);
+  }
+
+  // Check/create field group fields ''.
+  $fieldgrouplist = array('Email', 'Phone', 'Address');
+  if ($fieldgroup['status']) {
+    $fieldgroupvalues = privacy_civicrm_createFieldGroupValues($fieldgroup['id'], $optiongroup['id'], $fieldgrouplist);
+  }
+
+  // Continue.
   _privacy_civix_civicrm_enable();
 }
 
@@ -126,16 +148,12 @@ function privacy_civicrm_alterSettingsFolders(&$metaDataFolders = NULL) {
 }
 
 /**
- * Functions below this ship commented out. Uncomment as required.
- *
- *
- * /**
  * Implements hook_civicrm_preProcess().
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_preProcess
  */
 function privacy_civicrm_preProcess($formName, &$form) {
-
+  /* */
 }
 
 /**
