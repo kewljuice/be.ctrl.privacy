@@ -1,6 +1,6 @@
 <?php
 /**
- * CiviCRM functions
+ * CiviCRM functions for be.ctrl.privacy
  */
 
 /**
@@ -14,7 +14,7 @@ function privacy_civicrm_locationTypes() {
   // Get all active location types via API.
   $locationtypes = civicrm_api3('LocationType', 'get', array(
     'sequential' => 1,
-    'return' => "display_name,name",
+    'return' => 'display_name,name',
     'is_active' => 1,
   ));
   // Reformat for later use.

@@ -1,7 +1,7 @@
 <?php
 
 require_once 'privacy.civix.php';
-require_once 'php/functions.php';
+require_once 'php/privacy_functions.php';
 
 /**
  * Implements hook_civicrm_config().
@@ -52,7 +52,6 @@ function privacy_civicrm_uninstall()
  */
 function privacy_civicrm_enable()
 {
-
   // Check/create field group.
   $fieldgroup = privacy_civicrm_createFieldGroup('ctrl_individual_privacy', 'Privacy', 'Individual');
 
