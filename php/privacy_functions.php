@@ -14,12 +14,12 @@ function privacy_civicrm_locationTypes() {
   // Get all active location types via API.
   $locationtypes = civicrm_api3('LocationType', 'get', array(
     'sequential' => 1,
-    'return' => 'display_name,name',
+    'return' => 'id, display_name',
     'is_active' => 1,
   ));
   // Reformat for later use.
   foreach ($locationtypes['values'] as &$value) {
-    $types[$value['name']] = $value['display_name'];
+    $types[$value['id']] = $value['display_name'];
   }
   // Return array of location types.
   return $types;
@@ -107,6 +107,7 @@ function privacy_civicrm_createOptionGroup($name) {
  * @return array
  */
 function privacy_civicrm_createOptionGroupValues($groupID, $values) {
+  // TODO: check why this function saves doubles.
   $status = array();
   // Loop array with values.
   foreach ($values as $key => $value) {
@@ -114,7 +115,7 @@ function privacy_civicrm_createOptionGroupValues($groupID, $values) {
     $status[$value]['status'] = 0;
     // Check if option group value $value exists.
     $checkvalue = civicrm_api3('OptionValue', 'get', array(
-      'name' => $value,
+      'name' => $key,
       'option_group_id' => $groupID,
     ));
     if (!$checkvalue['is_error'] && $checkvalue['count'] > 0) {

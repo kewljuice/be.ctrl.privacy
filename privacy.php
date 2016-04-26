@@ -42,6 +42,11 @@ function privacy_civicrm_install()
  */
 function privacy_civicrm_uninstall()
 {
+  // TODO: clear extension variables
+
+  // CRM_Core_BAO_Setting::setItem($customfields, 'be.ctrl.privacy', 'customfields');
+  //CRM_Core_BAO_Setting::setItem($optiongrouplist, 'be.ctrl.privacy', 'optiongrouplist');
+
   _privacy_civix_civicrm_uninstall();
 }
 
@@ -71,6 +76,14 @@ function privacy_civicrm_enable()
   if ($fieldgroup['status']) {
     $fieldgroupvalues = privacy_civicrm_createFieldGroupValues($fieldgroup['id'], $optiongroup['id'], $fieldgrouplist);
   }
+
+  // Save values as be.ctrl.privacy extension variable.
+  $customfields = array();
+  foreach ($fieldgroupvalues as $fieldgroupvalue) {
+    $customfields[$fieldgroupvalue['value']] = $fieldgroupvalue['id'];
+  }
+  CRM_Core_BAO_Setting::setItem($customfields, 'be.ctrl.privacy', 'customfields');
+  CRM_Core_BAO_Setting::setItem($optiongrouplist, 'be.ctrl.privacy', 'optiongrouplist');
 
   // Continue.
   _privacy_civix_civicrm_enable();
