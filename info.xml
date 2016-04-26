@@ -20,7 +20,7 @@
     <compatibility>
         <ver>4.6</ver>
     </compatibility>
-    <comments>This is a new, undeveloped module</comments>
+    <comments>Currently in development</comments>
     <civix>
         <namespace>CRM/ctrl/privacy</namespace>
     </civix>
