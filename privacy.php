@@ -8,7 +8,8 @@ require_once 'php/functions.php';
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_config
  */
-function privacy_civicrm_config(&$config) {
+function privacy_civicrm_config(&$config)
+{
   _privacy_civix_civicrm_config($config);
 }
 
@@ -19,7 +20,8 @@ function privacy_civicrm_config(&$config) {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_xmlMenu
  */
-function privacy_civicrm_xmlMenu(&$files) {
+function privacy_civicrm_xmlMenu(&$files)
+{
   _privacy_civix_civicrm_xmlMenu($files);
 }
 
@@ -28,7 +30,8 @@ function privacy_civicrm_xmlMenu(&$files) {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_install
  */
-function privacy_civicrm_install() {
+function privacy_civicrm_install()
+{
   _privacy_civix_civicrm_install();
 }
 
@@ -37,7 +40,8 @@ function privacy_civicrm_install() {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_uninstall
  */
-function privacy_civicrm_uninstall() {
+function privacy_civicrm_uninstall()
+{
   _privacy_civix_civicrm_uninstall();
 }
 
@@ -46,7 +50,8 @@ function privacy_civicrm_uninstall() {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_enable
  */
-function privacy_civicrm_enable() {
+function privacy_civicrm_enable()
+{
 
   // Check/create field group.
   $fieldgroup = privacy_civicrm_createFieldGroup('ctrl_individual_privacy', 'Privacy', 'Individual');
@@ -63,7 +68,7 @@ function privacy_civicrm_enable() {
   }
 
   // Check/create field group fields ''.
-  $fieldgrouplist = array('Email', 'Phone', 'Address');
+  $fieldgrouplist = array('Address', 'Email', 'Phone');
   if ($fieldgroup['status']) {
     $fieldgroupvalues = privacy_civicrm_createFieldGroupValues($fieldgroup['id'], $optiongroup['id'], $fieldgrouplist);
   }
@@ -77,7 +82,8 @@ function privacy_civicrm_enable() {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_disable
  */
-function privacy_civicrm_disable() {
+function privacy_civicrm_disable()
+{
   _privacy_civix_civicrm_disable();
 }
 
@@ -93,7 +99,8 @@ function privacy_civicrm_disable() {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_upgrade
  */
-function privacy_civicrm_upgrade($op, CRM_Queue_Queue $queue = NULL) {
+function privacy_civicrm_upgrade($op, CRM_Queue_Queue $queue = NULL)
+{
   return _privacy_civix_civicrm_upgrade($op, $queue);
 }
 
@@ -105,7 +112,8 @@ function privacy_civicrm_upgrade($op, CRM_Queue_Queue $queue = NULL) {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_managed
  */
-function privacy_civicrm_managed(&$entities) {
+function privacy_civicrm_managed(&$entities)
+{
   _privacy_civix_civicrm_managed($entities);
 }
 
@@ -120,7 +128,8 @@ function privacy_civicrm_managed(&$entities) {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_caseTypes
  */
-function privacy_civicrm_caseTypes(&$caseTypes) {
+function privacy_civicrm_caseTypes(&$caseTypes)
+{
   _privacy_civix_civicrm_caseTypes($caseTypes);
 }
 
@@ -134,7 +143,8 @@ function privacy_civicrm_caseTypes(&$caseTypes) {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_caseTypes
  */
-function privacy_civicrm_angularModules(&$angularModules) {
+function privacy_civicrm_angularModules(&$angularModules)
+{
   _privacy_civix_civicrm_angularModules($angularModules);
 }
 
@@ -143,7 +153,8 @@ function privacy_civicrm_angularModules(&$angularModules) {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_alterSettingsFolders
  */
-function privacy_civicrm_alterSettingsFolders(&$metaDataFolders = NULL) {
+function privacy_civicrm_alterSettingsFolders(&$metaDataFolders = NULL)
+{
   _privacy_civix_civicrm_alterSettingsFolders($metaDataFolders);
 }
 
@@ -152,7 +163,8 @@ function privacy_civicrm_alterSettingsFolders(&$metaDataFolders = NULL) {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_preProcess
  */
-function privacy_civicrm_preProcess($formName, &$form) {
+function privacy_civicrm_preProcess($formName, &$form)
+{
   /* */
 }
 
