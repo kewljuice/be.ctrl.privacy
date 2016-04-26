@@ -2,8 +2,7 @@
 
 Attendees is a CiviCRM extension that adds custom attendee lists.
 - [Installation](#installation)
-- [Development Notes](#notes)
-***
+- [Development Notes](#development notes)
 
 ## Installation
 
