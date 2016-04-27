@@ -172,28 +172,26 @@ function privacy_civicrm_alterSettingsFolders(&$metaDataFolders = NULL)
 }
 
 /**
- * Implements hook_civicrm_preProcess().
- *
- * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_preProcess
+ * Implements hook_civicrm_post().
  */
-function privacy_civicrm_preProcess($formName, &$form)
+function privacy_civicrm_post($op, $objectName, $objectId, &$objectRef)
 {
-  /* */
+  // Execute API call
+  if ($objectName == 'Individual') {
+    if ($op == 'create' || $op == 'edit') {
+      $API = civicrm_api3('Privacy', 'set_all', array('sequential' => 1, 'contact_id' => $objectId));
+    }
+  }
 }
 
 /**
- * Implements hook_civicrm_navigationMenu().
- *
- * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_navigationMenu
- *
- * function privacy_civicrm_navigationMenu(&$menu) {
- * _privacy_civix_insert_navigation_menu($menu, NULL, array(
- * 'label' => ts('The Page', array('domain' => 'be.ctrl.privacy')),
- * 'name' => 'the_page',
- * 'url' => 'civicrm/the-page',
- * 'permission' => 'access CiviReport,access CiviContribute',
- * 'operator' => 'OR',
- * 'separator' => 0,
- * ));
- * _privacy_civix_navigationMenu($menu);
- * } // */
+ * Implements hook_civicrm_postProcess().
+ */
+function privacy_civicrm_postProcess($formName, &$form)
+{
+  // Execute API call
+  if ($formName == 'CRM_Contact_Form_Inline_CustomData') {
+    $contact = $form->_contactId;
+    $API = civicrm_api3('Privacy', 'set_all', array('sequential' => 1, 'contact_id' => $contact));
+  }
+}
