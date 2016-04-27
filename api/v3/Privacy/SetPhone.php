@@ -12,17 +12,21 @@ function civicrm_api3_privacy_set_phone($params) {
   // Execute function.
   try {
 
-    // Get all phone numbers for contact_id.
-    $list = array("private" => "phone1", "home" => "phone2");
+    // Set variables.
+    $status = "";
+    $valid = true;
+    $preferred = null;
+    $primary = null;
+
+    // TODO: Create proces for privacy options.
 
     // Get default value for phone from custom fields.
-    $object = array("default" => "currentvalue", "list" => $list);
-
+    $object = array("preferred" => $preferred, "primary" => $primary, "execute" => $valid, "status" => $status);
     // Create return array.
     $values = array($object);
+    // Return values via API function succes.
+    return civicrm_api3_create_success($values, $params, 'set_email', 'create');
 
-    // Execute.
-    return civicrm_api3_create_success($values, $params, 'set_phone', 'create');
   } catch (Exception $e) {
     // Exception.
     return civicrm_api3_create_error('Caught exception: ', $e->getMessage(), '\n');
