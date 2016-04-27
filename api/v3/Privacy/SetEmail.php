@@ -107,7 +107,7 @@ function civicrm_api3_privacy_set_email($params)
         'contact_id' => $params['contact_id'],
         'is_primary' => 1,
       ));
-      if (!$executeAPI['error']) {
+      if (!$executeAPI['is_error']) {
         $status = "Primary email address id: $email[id] has been changed";
       } else {
         $status = "Primary email address id:$email[id] hasn't been changed";
