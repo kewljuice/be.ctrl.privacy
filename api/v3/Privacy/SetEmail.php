@@ -116,18 +116,14 @@ function civicrm_api3_privacy_set_email($params)
 
     // Get default value for phone from custom fields.
     $object = array("preferred" => $preferred, "primary" => $primary, "execute" => $valid, "status" => $status);
-
     // Create return array.
     $values = array($object);
-
     // Return values via API function succes.
     return civicrm_api3_create_success($values, $params, 'set_email', 'create');
 
   } catch (Exception $e) {
-
     // Exception.
     return civicrm_api3_create_error('Caught exception: ', $e->getMessage(), '\n');
-
   }
 }
 
