@@ -67,7 +67,8 @@ function privacy_civicrm_enable()
   }
 
   // Check/create field group fields 'Address, Email, Phone'.
-  $fieldgrouplist = array('Address', 'Email', 'Phone');
+  // TODO: re-implement phone as privacy entity.
+  $fieldgrouplist = array('Address', 'Email');
   if ($fieldgroup['status']) {
     $fieldgroupvalues = privacy_civicrm_createFieldGroupValues($fieldgroup['id'], $optiongroup['id'], $fieldgrouplist);
   }
