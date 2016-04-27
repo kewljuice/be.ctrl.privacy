@@ -114,7 +114,7 @@ function civicrm_api3_privacy_set_address($params)
     }
 
     // Get default value for phone from custom fields.
-    $object = array("preferred" => $preferred, "primary" => $primary, "execute" => $valid, "status" => $status, "list" => $addressAPI['values']);
+    $object = array("preferred" => $preferred, "primary" => $primary, "execute" => $valid, "status" => $status);
     // Create return array.
     $values = array($object);
     // Return values via API function succes.
