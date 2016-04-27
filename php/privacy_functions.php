@@ -177,7 +177,7 @@ function privacy_civicrm_createFieldGroupValues($groupID, $optionID, $values) {
         'custom_group_id' => $groupID,
         'option_group_id' => $optionID,
         'data_type' => "String",
-        'html_type' => "Multi-Select",
+        'html_type' => "Radio",
         'is_searchable' => 1,
       ));
       // On succes, set status to true.
