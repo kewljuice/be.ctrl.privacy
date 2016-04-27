@@ -28,7 +28,7 @@ function civicrm_api3_privacy_set_email($params)
     ));
 
     // 1. Check if contact has email addresses set else skip.
-    if($valid)  {
+    if ($valid) {
       if ($emailAPI['count'] > 0) {
         $status = "Contact has email addresses";
       } else {
@@ -50,7 +50,7 @@ function civicrm_api3_privacy_set_email($params)
       ));
       $preferred = $customAPI['values'][0][$customfield];
       // Check preferred value is set.
-      if(isset($preferred[0])) {
+      if (isset($preferred[0])) {
         $preferred = $preferred[0];
         $status = "Contact has preferred location type set";
       } else {
@@ -64,8 +64,8 @@ function civicrm_api3_privacy_set_email($params)
     if ($valid) {
       // Check in email addresses list.
       $check = false;
-      foreach($emailAPI['values'] as $value) {
-        if($value['location_type_id'] == $preferred) {
+      foreach ($emailAPI['values'] as $value) {
+        if ($value['location_type_id'] == $preferred) {
           $email = $value;
           $check = true;
         }

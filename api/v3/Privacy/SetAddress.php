@@ -5,7 +5,8 @@
  *
  * http://booki.flossmanuals.net/civicrm-developer-guide/api/
  */
-function civicrm_api3_privacy_set_address($params) {
+function civicrm_api3_privacy_set_address($params)
+{
   // Set mandatory fields.
   civicrm_api3_verify_mandatory($params, NULL, array('contact_id',));
 
@@ -27,7 +28,7 @@ function civicrm_api3_privacy_set_address($params) {
     ));
 
     // 1. Check if contact has addresses set else skip.
-    if($valid)  {
+    if ($valid) {
       if ($addressAPI['count'] > 0) {
         $status = "Contact has addresses";
       } else {
@@ -49,7 +50,7 @@ function civicrm_api3_privacy_set_address($params) {
       ));
       $preferred = $customAPI['values'][0][$customfield];
       // Check preferred value is set.
-      if(isset($preferred[0])) {
+      if (isset($preferred[0])) {
         $preferred = $preferred[0];
         $status = "Contact has preferred location type set";
       } else {
@@ -63,8 +64,8 @@ function civicrm_api3_privacy_set_address($params) {
     if ($valid) {
       // Check in email addresses list.
       $check = false;
-      foreach($addressAPI['values'] as $value) {
-        if($value['location_type_id'] == $preferred) {
+      foreach ($addressAPI['values'] as $value) {
+        if ($value['location_type_id'] == $preferred) {
           $address = $value;
           $check = true;
         }
@@ -131,7 +132,8 @@ function civicrm_api3_privacy_set_address($params) {
  * @param array $params
  *   Array of parameters determined by getfields.
  */
-function _civicrm_api3_privacy_set_address_spec(&$params) {
+function _civicrm_api3_privacy_set_address_spec(&$params)
+{
   // We declare all these pseudoFields as there are other undocumented fields accessible via the api.
   $params['contact_id'] = array(
     'title' => 'Contact ID',
