@@ -99,7 +99,7 @@ function civicrm_api3_privacy_set_email($params)
 
     // 5. Execute set new primary.
     if ($valid) {
-       // Call API.
+      // Call API.
       $executeAPI = civicrm_api3('Email', 'create', array(
         'sequential' => 1,
         'id' => $email['id'],
