@@ -15,10 +15,10 @@ function civicrm_api3_privacy_set_all($params)
     // Create return array.
     $contact = $params['contact_id'];
 
-    // Execute SetAddress
+    // Execute SetAddress.
     $addressAPI = civicrm_api3('Privacy', 'set_address', array('sequential' => 1, 'contact_id' => $contact));
 
-    // Execute SetEmail
+    // Execute SetEmail.
     $emailAPI = civicrm_api3('Privacy', 'set_email', array('sequential' => 1, 'contact_id' => $contact));
 
     // Get default value for phone from custom fields.

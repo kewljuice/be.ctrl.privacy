@@ -179,7 +179,7 @@ function privacy_civicrm_post($op, $objectName, $objectId, &$objectRef)
   // Execute API call
   if ($objectName == 'Individual') {
     if ($op == 'create' || $op == 'edit') {
-      $API = civicrm_api3('Privacy', 'set_all', array('sequential' => 1, 'contact_id' => $objectId));
+      $API = register_shutdown_function('privacy_civicrm_shutdown', $objectId);
     }
   }
 }

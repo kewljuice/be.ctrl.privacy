@@ -190,3 +190,19 @@ function privacy_civicrm_createFieldGroupValues($groupID, $optionID, $values) {
   // Return array of results.
   return $status;
 }
+
+/**
+ *
+ * Executes CiviCRM Privacy API setAll for shutdown functions.
+ *
+ * @param integer $contactID contact ID
+ * @return array
+ */
+function privacy_civicrm_shutdown($contactID) {
+  // Execute Privacy API.
+  $API = civicrm_api3('Privacy', 'set_all', array(
+    'sequential' => 1,
+    'contact_id' => $contactID
+  ));
+  return $API;
+}
